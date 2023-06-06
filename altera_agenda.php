@@ -17,7 +17,7 @@
 <body>
     <h1>ALTERAR AGENDA </h1>
     <form action="altera_agenda_exe.php" 
-          method="post">
+          method="post" enctype="multipart/form-data">
         <input name="id_agenda" type="hidden" 
             value="<?php echo $row['id_agenda']?>">    
         <div>
@@ -65,6 +65,11 @@
             <input type="text" name="celular" id="celular"
             value="<?php echo $row['celular']?>">
         </div>
+        <div>
+                <img src="<?php echo $row['foto']?>" width="100" height="80"/>
+                <br>
+                <input type="file" name="foto" id="foto" accept="image/png, image/jpeg">
+            </div>
         <input type="submit" value="Salvar">
     </form>
 </body>

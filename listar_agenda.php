@@ -20,6 +20,7 @@
     <table width="500" align="center" border="1">
         <tr> 
             <th>Codigo</th>
+            <th>Foto</th>
             <th>Nome</th>
             <th>Apelido</th>
             <th>Endereço</th>
@@ -32,11 +33,14 @@
             <th>data cadastro</th>
             <th>Alterar agenda</th>
             <th>Excluir agenda</th>
+            <th>Excluir foto</th>
         </tr>
         <?php
             do{
                 echo "<tr>";
                     echo "<td>".$row['id_agenda']."</td>";
+                    if($row['foto'] == "") echo "<td></td>";
+                    else echo "<td><img src='".$row['foto']."' width='80' height='100'/></td>";
                     echo "<td>".$row['nome']."</td>";
                     echo "<td>".$row['apelido']."</td>";
                     echo "<td>".$row['endereco']."</td>";
@@ -51,6 +55,8 @@
                     ".$row["id_agenda"]."'>Alterar</a> </td>";
                     echo "<td><a href='excluir_agenda.php?id_agenda="
                     .$row['id_agenda']."'>Excluir</a></td>";
+                    echo "<td><a href='excluir_foto.php?id_agenda="
+                    .$row['id_agenda']."'>Excluir foto</a></td>";
                 echo "</tr>";
             } while($row = mysqli_fetch_array($result))
             

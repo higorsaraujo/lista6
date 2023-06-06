@@ -9,7 +9,7 @@
 <body>
     <h1>CADASTRO DE AGENDA </h1>
     <form action="cadastro_agenda.php" 
-          method="post">
+          method="post" enctype="multipart/form-data">
         <div>
             <label for="nome">Nome da agenda</label>
             <input type="text" name="nome" id="nome">
@@ -45,6 +45,9 @@
         <div>
             <label for="celular">Celular</label>
             <input type="text" name="celular" id="celular">
+        </div>
+        <div>
+            <input type="file" name="foto" id="foto" accept="image/png, image/jpeg">
         </div>
         <input type="submit" value="Salvar">
     </form>

@@ -12,6 +12,18 @@
     $celular = $_POST['celular'];
     $email = $_POST['email'];
 
+        //select imagem 
+
+    $sqlfoto = "SELECT foto FROM agenda WHERE id_agenda=$id_agenda";
+    $result = mysqli_query($con, $sqlfoto);
+    $nome_foto = $result;
+    if(file_exists($_FILES['foto']['tmp_name'])){
+    $pasta_destino = 'foto/';
+    $extensao = strtolower(substr($_FILES['foto']['name'],-4));
+    $nome_foto = $pasta_destino . date("Ymd-His") . $extensao;
+    move_uploaded_file($_FILES['foto']['tmp_name'],$nome_foto);
+    }
+
 
     echo "<h1>Alteraração de dados</h1>";
     $sql = "UPDATE agenda  SET 
@@ -23,7 +35,8 @@
         estado='$estado',
         telefone='$fone',
         celular='$celular', 
-        email='$email'
+        email='$email',
+        foto='$nome_foto'
         WHERE id_agenda=$id_agenda";
 
     $result = mysqli_query($con,$sql);
